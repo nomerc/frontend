@@ -50,23 +50,16 @@ export class AuthService {
         observe: 'response',
       }
     );
-    /*      .pipe(
+    /*from angular docs
+    but in our case we handle server errors directly in component no in service      
+        .pipe(
           catchError(
             this.handleError<User>(`localRegister`, 'authService', {} as User)
           )
         ); */
   }
 
-  googleSignUp() {
-    // window.open(
-    //   `${this.ROOT_URL}/auth/google`,
-    //   'mywindow',
-    //   'location=1,status=1,scrollbars=1, width=800,height=800'
-    // );
-    // let listener = window.addEventListener('message', (message) => {
-    //   console.log(message.data);
-    // });
-  }
+  googleSignUp() {}
 
   signOut(): Observable<any> {
     return this.http.get(`${this.ROOT_URL}/auth/signout`);
@@ -78,7 +71,10 @@ export class AuthService {
     });
   }
 
-  handleError<T>(serviceName = '', operation = 'operation', result = {} as T) {
+  // from angular docs
+  // but in our case we handle server errors directly in component no in service
+
+  /*   handleError<T>(serviceName = '', operation = 'operation', result = {} as T) {
     return (error: HttpErrorResponse): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
@@ -96,7 +92,7 @@ export class AuthService {
       // Let the app keep running by returning a safe result.
       return of(result);
     };
-  }
+  } */
 
   /*   handleError<T>(serviceName = '', operation = 'operation', result = {} as T) {
     return (error: HttpErrorResponse): HttpResponse<T> => {
