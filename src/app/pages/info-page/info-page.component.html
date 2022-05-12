@@ -1,0 +1,57 @@
+<div class="signup">
+  <div class="signup-connect">
+    <i
+      class="fa fa-user"
+      style="
+        font-size: 240px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      "
+    ></i>
+    <a class="btn btn-social btn-register" (click)="showProducts()"
+      ><i class="fa fa-user"></i> Show products</a
+    >
+    <a class="btn btn-social btn-register" (click)="signOut()"
+      ><i class="fa fa-user"></i> Sign out</a
+    >
+  </div>
+  <div class="signup-classic">
+    <h2>User Information</h2>
+    <form class="form">
+      <fieldset>
+        <input #id type="text" placeholder="id" value="{{ profile._id }}" />
+      </fieldset>
+      <fieldset class="username">
+        <input
+          #username
+          type="text"
+          placeholder="username"
+          value="{{ profile.username }}"
+        />
+      </fieldset>
+      <fieldset class="email">
+        <input
+          #displayed
+          type="text"
+          placeholder="displayed name"
+          value="{{ profile.displayedName }}"
+        />
+      </fieldset>
+      <fieldset class="username">
+        <input
+          #provider
+          type="text"
+          placeholder="provider"
+          value="{{ profile.providerName }}"
+        />
+      </fieldset>
+
+      <div *ngFor="let product of products">
+        <fieldset class="username">
+          <input type="text" value="{{ product.name }}" />
+        </fieldset>
+      </div>
+    </form>
+  </div>
+</div>

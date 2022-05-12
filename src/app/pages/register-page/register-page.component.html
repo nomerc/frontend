@@ -1,0 +1,45 @@
+<div class="signup">
+  <div class="signup-connect">
+    <i
+      class="fa fa-user"
+      style="
+        font-size: 240px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      "
+    ></i>
+    <a class="btn btn-social btn-register" routerLink="/signup"
+      ><i class="fa fa-user"></i> Sign up</a
+    >
+  </div>
+  <div class="signup-classic">
+    <h2>Register account</h2>
+    <form class="form" #credentials="ngForm">
+      <fieldset class="username">
+        <input #username type="text" placeholder="username" />
+      </fieldset>
+      <fieldset class="email">
+        <input #displayed type="displayed" placeholder="displayed name" />
+      </fieldset>
+      <fieldset class="password">
+        <input #password type="password" placeholder="password" />
+      </fieldset>
+
+      <button
+        class="btn btn-social"
+        (click)="
+          onLocalRegister(username.value, displayed.value, password.value)
+        "
+      >
+        <i *ngIf="loading; else image" class="fa csspinner duo"></i>
+        <ng-template #image>
+          <i class="fa fa-sign-in"></i>
+        </ng-template>
+
+        Register
+      </button>
+    </form>
+    <app-error-info message="{{ error }}"></app-error-info>
+  </div>
+</div>

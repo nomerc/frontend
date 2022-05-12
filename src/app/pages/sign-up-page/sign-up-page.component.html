@@ -1,0 +1,49 @@
+<div class="signup">
+  <div class="signup-connect">
+    <h1>Create your account</h1>
+    <a class="btn btn-social btn-facebook"
+      ><i class="fa fa-facebook"></i> Sign in with Facebook</a
+    >
+    <a class="btn btn-social btn-instagram"
+      ><i class="fa fa-instagram"></i> Sign in with Instagram</a
+    >
+    <a class="btn btn-social btn-twitter"
+      ><i class="fa fa-twitter"></i> Sign in with Twitter</a
+    >
+    <a class="btn btn-social btn-google" (click)="onGoogleSignUp()">
+      <i *ngIf="loading_g; else image_g" class="fa csspinner duo"></i>
+      <ng-template #image_g> <i class="fa fa-google"></i> </ng-template>
+      Sign in with Google
+    </a>
+
+    <a class="btn btn-social btn-github">
+      <i class="fa fa-github"></i> Sign in with Github
+    </a>
+
+    <a class="btn btn-social btn-register" routerLink="/register"
+      ><i class="fa fa-user"></i> Register account</a
+    >
+  </div>
+  <div class="signup-classic">
+    <h2>Or use the classical way</h2>
+    <form class="form" #credentials="ngForm">
+      <fieldset class="username">
+        <input #username type="text" placeholder="username" />
+      </fieldset>
+      <fieldset class="password">
+        <input #password type="password" placeholder="password" />
+      </fieldset>
+      <button
+        class="btn btn-social"
+        (click)="onLocalSignUp(username.value, password.value)"
+      >
+        <i *ngIf="loading; else image" class="fa csspinner duo"></i>
+        <ng-template #image>
+          <i class="fa fa-sign-in"></i>
+        </ng-template>
+        Log in
+      </button>
+    </form>
+    <app-error-info message="{{ error }}"></app-error-info>
+  </div>
+</div>
